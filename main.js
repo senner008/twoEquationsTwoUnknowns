@@ -1,59 +1,42 @@
 var algebra = require('algebra.js/algebra');
 var Equation = require('algebra.js/src/equations');
-
+// https://algebra.js.org
 
 var splitTrimParse = (eqStr) => eqStr .split('=').map(exp => algebra.parse(exp.trim()));
-var solveX = (equation) => equation.solveFor("x").toString();
-var solveY = (equation) => equation.solveFor("y").toString();
+var solveX = (equation) => equation.solveFor("x");
+var solveY = (equation) => equation.solveFor("y");
 
-function equations2unknowns2(eq1, eq2) {
+function twoEquationsTwounknowns(eq1, eq2) {
 
     var firstEquation = new Equation(...splitTrimParse(eq1));
+    var secondEquation = new Equation(...splitTrimParse(eq2));
 
-    var firstXInSecondEqString = eq2.replace('x', solveX(firstEquation));
+    var findY = solveY(new Equation(solveX(firstEquation), solveX(secondEquation)));
 
-    var secondEquation = new Equation(...splitTrimParse(firstXInSecondEqString));
-
-    var findY = solveY(secondEquation);
-
-    var firstYInFirstEqString = eq1.replace('y', findY);
-
-    var findX = solveX(new Equation(...splitTrimParse(firstYInFirstEqString)))
+    var findX = solveX(new Equation(solveY(firstEquation), findY));
 
     return {
-        findX,
-        findY
+        x : findX.toString(),
+        y : findY.toString()
     }
-
 }
 
+// Problem 1:
+// 72 fødder og 22 hoveder. Hvor mange mennesker(x) og hvor mange heste(y) 
 
-var result = equations2unknowns2("x * 2 + y * 4 = 72", "x + y = 22");
-console.log(result)
+var menAndHorses = twoEquationsTwounknowns("x * 2 + y * 4 = 72", "x + y = 22");
 
-// function equations2unknowns2(eq1, eq2) {
+console.log(menAndHorses)
 
-//     var firstEquation = new Equation(...splitTrimParse(eq1));
-//     var secondEquation = new Equation(...splitTrimParse(eq2));
+// Problem 2:
+// 20 ben og 9 møbler. Hvor mange 2-bens-stole(x) og hvor mange 3-bens-borde(y) 
 
+var chairsAndTables = twoEquationsTwounknowns("x * 2 + y * 3 = 20", "x + y = 9");
 
+console.log(chairsAndTables)
 
-//     solveX(firstEquation)
-//     solveX(secondEquation)
+// Problem 3
+// et eller andet...
+var something = twoEquationsTwounknowns("3 * x + 4 * y = 35", "4 * x + 2 * y = 20");
 
-//     var firstXInSecondEqString = eq2.replace('x', solveX(firstEquation));
-
-//     var secondEquation = new Equation(...splitTrimParse(firstXInSecondEqString));
-
-//     var findY = solveY(secondEquation);
-
-//     var firstYInFirstEqString = eq1.replace('y', findY);
-
-//     var findX = solveX(new Equation(...splitTrimParse(firstYInFirstEqString)))
-
-//     return {
-//         findX,
-//         findY
-//     }
-
-// }
+console.log(something)

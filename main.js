@@ -1,7 +1,7 @@
 var algebra = require('algebra.js/algebra');
 var Equation = require('algebra.js/src/equations');
 
-var splitTrimParse = (eqStr) => eqStr .split('=').map(exp => algebra.parse(exp.trim()));
+var splitTrimParse = (eqStr) => eqStr.split('=').map(exp => algebra.parse(exp.trim()));
 var solveX = (equation) => equation.solveFor("x");
 var solveY = (equation) => equation.solveFor("y");
 
@@ -16,10 +16,14 @@ function twoEquationsTwoUnknowns(eq1, eq2) {
     }
 }
 
+console.time('t')
 // Problem 1:
 // 72 fødder og 22 hoveder. Hvor mange mennesker(x) og hvor mange heste(y) 
-var menAndHorses = twoEquationsTwoUnknowns("x * 2 + y * 4 = 72", "x + y = 22");
+var menAndHorses = twoEquationsTwoUnknowns("x * 2 + y * 4 = 100", "x + y = 40");
+
 console.log(menAndHorses); // { x: '8', y: '14' }
+
+
 
 // Problem 2:
 // 20 ben og 9 møbler. Hvor mange 2-bens-stole(x) og hvor mange 3-bens-borde(y) 

@@ -25,8 +25,8 @@ console.log(menAndHorses); // { x: '8', y: '14' }
 // 20 ben og 9 møbler. Hvor mange 2-bens-stole(x) og hvor mange 3-bens-borde(y) 
 var chairsAndTables = twoEquationsTwoUnknowns("x * 2 + y * 3 = 20", "x + y = 9");
 console.log(chairsAndTables); // { x: '7', y: '2' }
-// Problem 3
 
+// Problem 3
 // et eller andet...
 var something = twoEquationsTwoUnknowns("3 * x + 4 * y = 35", "4 * x + 2 * y = 20");
 console.log(something); // { x: '1', y: '8' }

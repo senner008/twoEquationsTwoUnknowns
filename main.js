@@ -1,5 +1,6 @@
 var algebra = require('algebra.js/algebra');
 var Equation = require('algebra.js/src/equations');
+
 var splitTrimParse = (eqStr) => eqStr .split('=').map(exp => algebra.parse(exp.trim()));
 var solveX = (equation) => equation.solveFor("x");
 var solveY = (equation) => equation.solveFor("y");

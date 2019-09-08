@@ -28,5 +28,5 @@ console.log(chairsAndTables); // { x: '7', y: '2' }
 // Problem 3
 
 // et eller andet...
-var something = twoEquationsTwoUnknowns("3 * x + 4 * y = 35", "4 * x + 2 * y = 20");
+var something = twoEquationsTwoUnknowns("3 * x + 4 * y = 35", "4 * x + 2 * y = 21");
 console.log(something); // { x: '1', y: '8' }
